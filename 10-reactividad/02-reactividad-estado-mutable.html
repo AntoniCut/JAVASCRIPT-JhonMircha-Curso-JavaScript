@@ -1,0 +1,116 @@
+<!--  **************************************************************************  -->
+<!--  **********  /10-reactividad/02-reactividad-estado-mutable.html  **********  -->
+<!--  **************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title> Reactividad del Estado Mutable </title>
+</head>
+
+<body>
+
+   <h1> Reactividad del Estado Mutable </h1>
+
+   <form id="todo-form">
+      <input type="text" id="todo-item" placeholder="Tareas por hacer">
+      <input type="submit" id="todo-boton" value="Agregar">
+   </form>
+
+   <h2> Lista de Tareas </h2>
+
+
+   <ul id="todo-list">
+      <!--  **********  Renderizado de Tareas  **********  -->
+   </ul>
+
+
+   <!--  **********  Código JS  **********  -->
+   <script>
+
+      //  -----  Referencias al HTML  -----
+      const d = document;
+      const $form = d.getElementById('todo-form');
+      const $item = d.getElementById('todo-item');
+      const $list = d.getElementById('todo-list');
+
+
+      //  -----  Estado  -----
+      const state = {
+         todoList: [],
+         //nombre: ""
+      }
+
+
+      //  -----  Template UI  -----  Lo que queremos renderizar.
+      const template = () => {
+
+         if (state.todoList.length < 1) return '<p><em>Lista sin tareas por hacer</em></p>';
+
+         // Recorremos la lista de tareas y las guardamos en 'todos'.
+         const todos = state.todoList.map(item => `<li>${item}</li>`).join("");
+         return todos;
+
+      }
+
+
+      //  -----  RENDER de UI  -----  Renderiza el template
+      const render = () => {
+
+         console.log(state);
+         $list.innerHTML = template();
+      }
+
+
+      //  -----  Actualizar el ESTADO de forma REACTIVA  -----
+      const setState = obj => {
+
+         for (let key in obj) if (state.hasOwnProperty(key)) state[key] = obj[key];
+         render();
+      }
+
+
+      //  *****  Cuando el Documento Carge ejecuta render()  *****
+      document.addEventListener('DOMContentLoaded', render);
+
+
+      //  -----  Estableciendo valores por defecto al state  -----
+      setState({
+         todoList: ['tarea 1', 'tarea 2', 'tarea 3'],
+         nombre: 'Antonio'
+      });
+
+      
+      //  -----  Estado Mutable  -----
+      //  Permite modificar el estado directamente creando una copia del objeto
+      //  y agregando otro elemento.
+      const items = state.todoList;
+      items.push('Tarea 4');
+      console.warn('*****  Estado Mutable  *****s', items)
+
+
+      //  -----  pulsar botón agregar  -----
+      $form.addEventListener('submit', e => {
+
+         e.preventDefault();
+         if ($item.value.trim() === '') return;
+
+         //  -----  Actualizar el 'state' y la 'UI'  -----
+         state.todoList.push($item.value);
+         render();
+
+         //  -----  Limpiar el input
+         $item.value = "";
+         $item.focus();
+
+      });
+
+   </script>
+
+</body>
+
+</html>
