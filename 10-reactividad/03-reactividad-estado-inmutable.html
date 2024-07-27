@@ -74,6 +74,10 @@
       }
 
 
+      //  -----  Obtenemos una COPIA INMUTABLE del Objeto  -----
+      const getState = () =>  JSON.parse(JSON.stringify(state));
+
+
       //  *****  Cuando el Documento Carge ejecuta render()  *****
       document.addEventListener('DOMContentLoaded', render);
 
@@ -88,9 +92,12 @@
       //  -----  Estado Mutable  -----
       //  Permite modificar el estado directamente creando una copia del objeto
       //  y agregando otro elemento.
-      const items = state.todoList;
-      items.push('Tarea 4');
-      console.warn('*****  Estado Mutable  *****s', items)
+
+      //const items = state.todoList;
+      const items = getState();
+      //items.push('Tarea 4');
+      items.todoList.push('Tarea 4');
+      console.warn('*****  Estado Inmutable  *****', state)
 
 
       //  -----  pulsar botón agregar  -----
@@ -99,11 +106,12 @@
          e.preventDefault();
          if ($item.value.trim() === '') return;
 
-         //  -----  Actualizar el 'state' y la 'UI'  -----
-         state.todoList.push($item.value);
-         render();
-
-         //  -----  Limpiar el input
+         //  -----  Actualizar el 'state' y la 'UI' de forma Reactiva -----
+         const lastState = getState();
+         lastState.todoList.push($item.value);
+         setState({todoList: lastState.todoList})
+         
+         //  -----  Limpiar el input  -----
          $item.value = "";
          $item.focus();
 
