@@ -1,0 +1,121 @@
+<!--  **********************************************************************  -->
+<!--  **********  /10-reactividad/04-componentes-con-estado.html  **********  -->
+<!--  **********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title> Componentes Con Estado </title>
+</head>
+
+<body>
+
+   <h1> Componentes Con Estado </h1>
+
+   <form id="todo-form">
+      <input type="text" id="todo-item" placeholder="Tareas por hacer">
+      <input type="submit" id="todo-boton" value="Agregar">
+   </form>
+
+   <h2> Lista de Tareas </h2>
+
+
+   <ul id="todo-list">
+      <!--  **********  Renderizado de Tareas  **********  -->
+   </ul>
+
+
+   <!--  **********  Código JS  **********  -->
+   <script>
+
+      //  -----  Referencias al HTML  -----
+      const d = document;
+      const $form = d.getElementById('todo-form');
+      const $item = d.getElementById('todo-item');
+      const $list = d.getElementById('todo-list');
+
+
+      //  -----  Estado o State GLOBAL  -----
+      const state = {
+         todoList: [],
+      }
+
+
+      //  -----  Template UI  -----  Lo que queremos renderizar.
+      const template = () => {
+
+         if (template.data.todoList.length < 1) return '<p><em>Lista sin tareas por hacer</em></p>';
+
+         // Recorremos la lista de tareas y las guardamos en 'todos'.
+         const todos = template.data.todoList.map(item => `<li>${item}</li>`).join("");
+         return todos;
+
+      }
+
+      
+      //  -----  Agregar State al Template que genera el Componente de UI (State Local)  -----
+      template.data = {
+         todoList: [],
+         nombre: ""
+      }
+      
+
+      //  -----  RENDER de UI  -----  Renderiza el template
+      const render = () => {
+
+         console.log(template.data);
+         $list.innerHTML = template();
+         console.log("Estado Global: ", state);
+         console.log("Estado Local: ", template.data);
+      }
+
+
+      //  -----  Actualizar el ESTADO de forma REACTIVA  -----
+      const setState = obj => {
+
+         for (let key in obj) if (template.data.hasOwnProperty(key)) template.data[key] = obj[key];
+         render();
+      }
+      //  ----------------------------------------------------------------------------------------------
+
+
+      //  -----  Obtenemos una COPIA INMUTABLE del Objeto  -----
+      const getState = () =>  JSON.parse(JSON.stringify(template.data));
+
+
+      //  *****  Cuando el Documento Carge ejecuta render()  *****
+      document.addEventListener('DOMContentLoaded', render);
+
+
+      //  -----  Estableciendo valores por defecto al state  -----
+      setState({
+         todoList: ['tarea 1', 'tarea 2', 'tarea 3'],
+      });
+
+      
+      //  -----  pulsar botón agregar  -----
+      $form.addEventListener('submit', e => {
+
+         e.preventDefault();
+         if ($item.value.trim() === '') return;
+
+         //  -----  Actualizar el 'state' y la 'UI' de forma Reactiva -----
+         const lastState = getState();
+         lastState.todoList.push($item.value);
+         setState({todoList: lastState.todoList})
+         
+         //  -----  Limpiar el input  -----
+         $item.value = "";
+         $item.focus();
+
+      });
+
+   </script>
+
+</body>
+
+</html>
