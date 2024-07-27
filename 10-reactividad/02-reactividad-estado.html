@@ -1,0 +1,91 @@
+<!--  ****************************************************************  -->
+<!--  **********  /10-reactividad/01-ui-basada-estado.html  **********  -->
+<!--  ****************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Interfaz de Usuario Basada en el Estado </title>
+</head>
+
+<body>
+
+    <h1> Interfaz de Usuario Basada en el Estado </h1>
+
+    <form id="todo-form">
+        <input type="text" id="todo-item" placeholder="Tareas por hacer">
+        <input type="submit" id="todo-boton" value="Agregar">
+    </form>
+
+    <h2> Lista de Tareas </h2>
+
+    
+    <ul id="todo-list">
+        <!--  **********  Renderizado de Tareas  **********  -->
+    </ul> 
+
+    <!--  **********  Código JS  **********  -->
+    <script>
+        
+        //  -----  Referencias al HTML  -----
+        const d = document;
+        const $form = d.getElementById('todo-form');
+        const $item = d.getElementById('todo-item');
+        const $list = d.getElementById('todo-list');
+
+
+        //  -----  Estado  -----
+        const state = {
+            todoList: []
+        }
+
+
+        //  -----  Template UI  -----
+        const template = () => {
+            
+            if (state.todoList.length < 1) return '<p><em>Lista sin tareas por hacer</em></p>';
+            
+            // Recorremos la lista de tareas y las guardamos en 'todos'.
+            const todos = state.todoList.map(item => `<li>${item}</li>`).join("");
+            return todos;
+
+        }
+
+
+        //  -----  RENDER de UI  -----
+        const render = () => {
+            
+            console.log(state);
+            $list.innerHTML = template();
+
+        }
+
+
+        //  *****  Cuando el Documento Carge ejecuta render()  *****
+        document.addEventListener('DOMContentLoaded', render);
+
+        //  -----  pulsar botón agregar  -----
+        $form.addEventListener('submit', e => {
+            
+            e.preventDefault();
+            if ($item.value.trim() === '') return;
+
+            //  -----  Actualizar el 'state' y la 'UI'  -----
+            state.todoList.push($item.value);
+            render();
+
+            //  -----  Limpiar el input
+            $item.value = "";
+            $item.focus();
+
+        });
+        
+    </script>
+
+</body>
+
+</html>
