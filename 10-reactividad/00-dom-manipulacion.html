@@ -1,0 +1,63 @@
+<!--  ****************************************************************  -->
+<!--  **********  /10-reactividad/00-dom-manipulacion.html  **********  -->
+<!--  ****************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dom Manipulacion </title>
+</head>
+
+<body>
+
+    <h1> Manipulacion Manual del DOM </h1>
+
+    <form id="todo-form">
+        <input type="text" id="todo-item" placeholder="Tareas por hacer">
+        <input type="submit" id="todo-boton" value="Agregar">
+    </form>
+
+    <h2> Lista de Tareas </h2>
+
+    <ul id="todo-list"></ul>
+
+    <!--  **********  Código JS  **********  -->
+    <script>
+        
+        //  *****  Documento Cargado  *****
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            console.warn("**********  Documento Cargado!!!  **********");
+            const d = document;
+            const $form = d.getElementById('todo-form');
+            const $item = d.getElementById('todo-item');
+            const $list = d.getElementById('todo-list');
+
+            //  -----  pulsar botón agregar  -----
+            $form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                if ($item.value.trim() === '') return;
+
+                //  -----  Agregar un item a la lista.
+                const $li = d.createElement('li');
+                $li.textContent = $item.value;
+                $list.appendChild($li);
+
+                //  -----  Limpiar el input
+                $item.value = "";
+                $item.focus();
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

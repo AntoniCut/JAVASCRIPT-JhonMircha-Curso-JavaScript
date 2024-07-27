@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dom Manipulacion </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h1> Manipulacion Manual del DOM con jQuery </h1>
+
+    <form id="todo-form">
+        <input type="text" id="todo-item" placeholder="Tareas por hacer">
+        <input type="submit" id="todo-boton" value="Agregar">
+    </form>
+
+    <h2> Lista de Tareas </h2>
+
+    <ul id="todo-list"></ul>
+
+    <!--  **********  Código jQuery  **********  -->
+    <script>
+        $(document).ready(function () {
+            console.warn("**********  Documento Cargado!!!  **********");
+
+            const $form = $('#todo-form');
+            const $item = $('#todo-item');
+            const $list = $('#todo-list');
+
+            //  -----  pulsar botón agregar  -----
+            $form.on('submit', function (e) {
+                e.preventDefault();
+
+                if ($item.val().trim() === '') return;
+
+                //  -----  Agregar un item a la lista.
+                const $li = $('<li></li>').text($item.val());
+                $list.append($li);
+
+                //  -----  Limpiar el input
+                $item.val('');
+                $item.focus();
+            });
+        });
+    </script>
+
+</body>
+
+</html>
