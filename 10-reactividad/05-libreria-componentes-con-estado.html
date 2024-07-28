@@ -1,6 +1,6 @@
-<!--  **********************************************************************  -->
-<!--  **********  /10-reactividad/04-componentes-con-estado.html  **********  -->
-<!--  **********************************************************************  -->
+<!--  *******************************************************************************  -->
+<!--  **********  /10-reactividad/05-libreria-componentes-con-estado.html  **********  -->
+<!--  *******************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -9,12 +9,12 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title> Componentes Con Estado </title>
+   <title> Libreria Componentes Con Estado </title>
 </head>
 
 <body>
 
-   <h1> Componentes Con Estado </h1>
+   <h1> Libreria Componentes Con Estado </h1>
 
    <form id="todo-form">
       <input type="text" id="todo-item" placeholder="Tareas por hacer">
@@ -24,79 +24,54 @@
    <h2> Lista de Tareas </h2>
 
 
-   <ul id="todo-list">
-      <!--  **********  Renderizado de Tareas  **********  -->
+   <ul id="todo-list">  
+      <!--  **********  Renderizado de Tareas  **********  -->  
    </ul>
+
+
+   <!--  **********  Llamada a la Libreria o Componente  **********  -->
+   <script src="Component.js"> </script>
 
 
    <!--  **********  Código JS  **********  -->
    <script>
 
-      //  -----  Referencias al HTML  -----
+      
+      //  -----  Referencias al HTML  ----------
       const d = document;
       const $form = d.getElementById('todo-form');
       const $item = d.getElementById('todo-item');
       const $list = d.getElementById('todo-list');
-
-
-      //  -----  Estado o State GLOBAL  -----
-      const state = {
-         todoList: [],
-      }
-
-
-      //  -----  Template UI  -----  Lo que queremos renderizar.
-      const template = () => {
-
-         if (template.data.todoList.length < 1) return '<p><em>Lista sin tareas por hacer</em></p>';
-
-         // Recorremos la lista de tareas y las guardamos en 'todos'.
-         const todos = template.data.todoList.map(item => `<li>${item}</li>`).join("");
-         return todos;
-
-      }
-
       
-      //  -----  Agregar State al Template que genera el Componente de UI (State Local)  -----
-      template.data = {
-         todoList: [],
-         nombre: ""
-      }
       
+      //  ----------  Llamada al Componente  ----------
+      const app = new Component({
+         el: "#todo-list",
+         data: {
+            todoList: []
+         },
+         template: function (props) {
 
-      //  -----  RENDER de UI  -----  Renderiza el template
-      const render = () => {
+            if (props.todoList.length < 1) return '<p><em>Lista sin tareas por hacer</em></p>';
 
-         console.log(template.data);
-         $list.innerHTML = template();
-         console.log("Estado Global: ", state);
-         console.log("Estado Local: ", template.data);
-      }
+            // Recorremos la lista de tareas y las guardamos en 'todos'.
+            const todos = props.todoList.map(item => `<li>${item}</li>`).join("");
+            return todos;
+         }
 
-
-      //  -----  Actualizar el ESTADO de forma REACTIVA  -----
-      const setState = obj => {
-
-         for (let key in obj) if (template.data.hasOwnProperty(key)) template.data[key] = obj[key];
-         render();
-      }
-      //  ----------------------------------------------------------------------------------------------
-
-
-      //  -----  Obtenemos una COPIA INMUTABLE del Objeto  -----
-      const getState = () =>  JSON.parse(JSON.stringify(template.data));
+      });
 
 
       //  *****  Cuando el Documento Carge ejecuta render()  *****
-      document.addEventListener('DOMContentLoaded', render);
+      document.addEventListener('DOMContentLoaded', app);
 
 
       //  -----  Estableciendo valores por defecto al state  -----
-      setState({
+      app.setState({
          todoList: ['tarea 1', 'tarea 2', 'tarea 3'],
       });
 
-      
+
       //  -----  pulsar botón agregar  -----
       $form.addEventListener('submit', e => {
 
@@ -104,10 +79,10 @@
          if ($item.value.trim() === '') return;
 
          //  -----  Actualizar el 'state' y la 'UI' de forma Reactiva -----
-         const lastState = getState();
+         const lastState = app.getState();
          lastState.todoList.push($item.value);
-         setState({todoList: lastState.todoList})
-         
+         app.setState({ todoList: lastState.todoList })
+
          //  -----  Limpiar el input  -----
          $item.value = "";
          $item.focus();
