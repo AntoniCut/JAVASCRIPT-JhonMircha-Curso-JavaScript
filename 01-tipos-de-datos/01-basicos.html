@@ -268,20 +268,41 @@
 
         let verdadero = true;
         let falso = false;
-        console.log("verdadero: ", verdadero , "falso: ", falso);
-        
+        console.log("verdadero: ", verdadero, "falso: ", falso);
+
         let v = Boolean(true);
         let f = Boolean(false);
-        console.log("\nlet v = Boolean(true); ", verdadero , "\nlet f = Boolean(false)", falso);
+        console.log("\nlet v = Boolean(true); ", verdadero, "\nlet f = Boolean(false)", falso);
 
         //console.log(verdadero, falso, v, f);
         console.log("\ntypeof verdadero", typeof verdadero, "\ntypeof falso", typeof falso);
-        
+
         console.log("\nBoolean(0)", Boolean(0));
         console.log("\nBoolean(-7)", Boolean(-7));
         console.log('\nBoolean("")', Boolean(""));
         console.log('\nBoolean(" ")', Boolean(" "));
+
+
+
+        /*  *******************************************************************************  */
+        /*  **********  Curso JavaScript: 9. undefined, null & NaN - #jonmircha  **********  */
+        /*  *******************************************************************************  */
+
+        console.log("\n\n");
+        console.warn("**********  undefined, null, NaN  **********");
+        console.log("\n");
         
+        //  -----  undefined indica que no se ha inicializado una variable y que el valor está ausente  -----
+        let indefinida;
+        console.log("\nlet indefinida", indefinida);
+
+        //  -----  null es un valor especial que indica la ausencia de un valor  -----
+        let nulo = null;
+        console.log("\nlet nulo = null", nulo);
+
+        //  -----  NaN - Not a Number  -----
+        let noEsUnNumero = "hola" * 3.7;
+        console.log('\nlet noEsUnNumero = "hola" * 3.7', noEsUnNumero);
 
 
 
