@@ -1,0 +1,269 @@
+<!-- ********************************************************** -->
+<!-- **********  /01-tipos-de-datos/01-basicos.html  ********** -->
+<!-- ********************************************************* -->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Básicos </title>
+
+    <!--  **********  Favicon  **********  -->
+    <link rel="icon" href="../favicon/favicon-JS-2.ico">
+
+</head>
+
+<body>
+
+    <h1> Fundamentos JavaScript </h1>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vitae eveniet suscipit velit explicabo repellat
+        esse, a quaerat, gni ipsam iure error dolorem alias tempore quod, consectetur saepe blanditiis pariatur.
+    </p>
+
+    <!--  ****************************************************************************************************************************  -->
+    <script>
+
+
+        //  ******************************************************************************************
+        //  **********     Curso JavaScript: 3. Variables: var 🥊VS🥊 let - #jonmircha     ********** 
+        //  ******************************************************************************************
+
+        console.warn("**********  Variables VAR, LET y CONST  **********");
+        console.log("\n");
+
+        var hola = 'Hola Mundo';
+        let hello = 'Hello Word';
+
+        function miFuncion() {
+            console.log('Mi Función');
+        }
+
+        console.log(miFuncion());
+        console.log("Windows: ", window);
+        console.log("Windows.hola: ", window.hola);
+        console.log("Windows.hello: ", window.hello);
+
+
+        //  **********  Variables con VAR  **********
+
+        console.log("\n\n");
+        console.warn("**********  VAR  **********");
+        console.log("\n");
+
+
+        var musica = 'Rock';
+        console.log('Variable Musica con var antes del bloque: ', musica);
+
+        //  -----  Esto es un Bloque  -----
+        {
+            var musica = 'Heavy';
+            console.log(console.log('Variable Musica con var dentro del bloque: ', musica));
+        }
+
+        console.log(console.log('Variable Musica con var despues del bloque: ', musica));
+
+
+
+        //  **********  Variables con LET  **********
+
+        console.log("\n\n");
+        console.warn("**********  LET  **********");
+        console.log("\n");
+
+
+        let musica2 = 'Rock';
+        console.log('Variable Musica2 con let antes del bloque: ', musica2);
+
+        //  -----  Esto es un Bloque  -----
+        {
+            let musica2 = 'Heavy';
+            console.log('Variable Musica con let dentro del bloque: ', musica2);
+        }
+
+        console.log('Variable Musica con let despues del bloque: ', musica2);
+
+
+
+        //  **********************************************************************************  
+        //  **********     Curso JavaScript: 4. Constantes (const) - #jonmircha     **********
+        //  **********************************************************************************
+
+
+        //  **********  Variables con CONST  **********
+
+        console.log("\n\n");
+        console.warn("**********  CONST  **********");
+        console.log("\n");
+
+
+        const PI = 3.1416;
+        console.log("constante PI: ", { PI });
+
+        const objeto = {
+            nombre: 'Antonio',
+            edad: 48
+        }
+
+        const colores = ['blanco', 'negro', 'azul'];
+
+        console.log("objeto: ", { objeto });
+        console.log("colores: ", { colores });
+
+        console.log("objeto.correo: ", objeto.correo = 'antonicut@gmail.com');
+
+        console.log("colores[3]: ", colores[3] = 'anaranjado');
+        console.log({ colores });
+
+        console.log("colores[4]: ", colores.push('verdoso'));
+        console.log({ colores });
+
+
+
+        //  ******************************************************************************************
+        //  **********     Curso JavaScript: 5. Cadenas de Texto (Strings) - #jonmircha     **********
+        //  ******************************************************************************************
+
+        //  **********  Cadenas de Texto / String  **********
+
+        console.log("\n\n");
+        console.warn("**********  String  **********");
+        console.log("\n");
+
+        //  -----  Propiedades  -----
+        let nombre = "Antonio";
+        let apellido = "Cutillas";
+        let saludo = new String("Hola Mundo!!!");
+        console.log({
+            nombre,
+            longitud: nombre.length,
+            apellido,
+            longitud: apellido.length,
+            saludo,
+            longitud: saludo.length
+        });
+
+        console.log(
+            nombre,
+            nombre.length,
+            apellido,
+            apellido.length,
+            saludo,
+            saludo.length
+        );
+
+        console.log("Minusculas: ",
+            nombre.toLowerCase(),
+            apellido.toLowerCase(),
+            saludo.toLowerCase()
+        );
+
+        console.log("Mayusculas: ",
+            nombre.toUpperCase(),
+            apellido.toUpperCase(),
+            saludo.toUpperCase()
+        );
+
+        let lorem = "          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus vitae eveniet suscipit velit explicabo repellat esse, a quaerat, gni ipsam iure     error dolorem alias tempore quod, consectetur saepe blanditiis pariatur          ."
+
+
+        console.log("Lorem: ", lorem);
+        console.log("Lorem Incluye amet: ", lorem.includes('amet'));    //  si la palabra esta incluido en el string. 
+        console.log("Metodo trim() para lorem: ", lorem.trim());        //  quita los espacios en blanco.
+        console.log("Metodo split() para lorem: ", lorem.split(" "));   //  separa el string por espacios en blanco.
+
+
+
+        /*  ********************************************************************************  */
+        /*  **********     Curso JavaScript: 6. Template Strings - #jonmircha     **********  */
+        /*  ********************************************************************************  */
+
+        console.log("\n\n");
+        console.warn("**********  Template String  **********");
+        console.log("\n");
+
+
+        {
+            let nombre = "Antonio";
+            let apellido = "Cutillas";
+
+            //  -----  Concatenación de Variables  -----
+            let saludo2 = "Hola mi nombre es " + nombre + " " + apellido + ".";
+            console.log(saludo2);
+
+            //  -----  Interpolción de variables  -----
+            //  -----  Template String  -----
+            let saludo3 = `Hola mi nombre es ${nombre} ${apellido}.`;
+            console.log(saludo3);
+
+            let ul1 = "<ul> <li> Primavera</li> <li>Verano</li> <li>Otoño</li> <li>Invierno</li> </ul>";
+            console.log("ul1: ", ul1);
+
+            let ul2 = `
+                 <ul>
+                     <li>Primavera</li>
+                     <li>Verano</li>
+                     <li>Otoño</li>
+                     <li>Invierno</li>
+                 </ul>
+            `;
+            console.log("ul2 - template string: ", ul2);
+
+            let ul3 = ` <ul> <li>Primavera</li> <li>Verano</li> <li>Otoño</li> <li>Invierno</li> </ul> `;
+            console.log("ul3 - template string: ", ul3);
+
+
+            let ul4 = "<ul>";
+            ul4 += "<li> Primavera</li>";
+            ul4 += "<li>Verano</li>";
+            ul4 += "<li>Otoño</li>";
+            ul4 += "<li>Invierno</li>";
+            ul4 += "</ul>";
+
+            console.log("ul4", ul3);
+
+        }
+
+
+
+        /*  ****************************************************************************  */
+        /*  **********  Curso JavaScript: 7. Números (Numbers) - #jonmircha  ***********  */
+        /*  ****************************************************************************  */
+
+        console.log("\n\n");
+        console.warn("**********  Números  **********");
+        console.log("\n");
+
+
+        let a = 2;
+        let b = new Number(1);
+        let c = 7.19;
+        let d = "5.6";
+
+        console.log("a: ", a , "b: ", b ,"c: ", c , "d: ", d);
+        console.log("c.toFixed(1): ", c.toFixed(1));
+        console.log("c.toFixed(5): ", c.toFixed(5));
+        console.log("parseInt(c): ",  parseInt(c));
+        console.log("parseFloat(c):",  parseFloat(c));
+        console.log("typeof c, typeof d:", typeof c, typeof d);
+        console.log("a + b:", a + b);
+        console.log("c + parseInt(d):", c + parseInt(d));
+        console.log("c + parseFloat(d):", c + parseFloat(d));
+        console.log("c + Number.parseInt(d):", c + Number.parseInt(d));
+        console.log("c + Number.parseFloat(d):", c + Number.parseFloat(d));
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
