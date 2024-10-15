@@ -243,11 +243,11 @@
         let c = 7.19;
         let d = "5.6";
 
-        console.log("a: ", a , "b: ", b ,"c: ", c , "d: ", d);
+        console.log("a: ", a, "b: ", b, "c: ", c, "d: ", d);
         console.log("c.toFixed(1): ", c.toFixed(1));
         console.log("c.toFixed(5): ", c.toFixed(5));
-        console.log("parseInt(c): ",  parseInt(c));
-        console.log("parseFloat(c):",  parseFloat(c));
+        console.log("parseInt(c): ", parseInt(c));
+        console.log("parseFloat(c):", parseFloat(c));
         console.log("typeof c, typeof d:", typeof c, typeof d);
         console.log("a + b:", a + b);
         console.log("c + parseInt(d):", c + parseInt(d));
@@ -256,6 +256,32 @@
         console.log("c + Number.parseFloat(d):", c + Number.parseFloat(d));
 
 
+
+        /*  ******************************************************************  */
+        /*  **********  Curso JavaScript: 8. Booleans - #jonmircha  **********  */
+        /*  ******************************************************************  */
+
+        console.log("\n\n");
+        console.warn("**********  Booleans  **********");
+        console.log("\n");
+
+
+        let verdadero = true;
+        let falso = false;
+        console.log("verdadero: ", verdadero , "falso: ", falso);
+        
+        let v = Boolean(true);
+        let f = Boolean(false);
+        console.log("\nlet v = Boolean(true); ", verdadero , "\nlet f = Boolean(false)", falso);
+
+        //console.log(verdadero, falso, v, f);
+        console.log("\ntypeof verdadero", typeof verdadero, "\ntypeof falso", typeof falso);
+        
+        console.log("\nBoolean(0)", Boolean(0));
+        console.log("\nBoolean(-7)", Boolean(-7));
+        console.log('\nBoolean("")', Boolean(""));
+        console.log('\nBoolean(" ")', Boolean(" "));
+        
 
 
 
