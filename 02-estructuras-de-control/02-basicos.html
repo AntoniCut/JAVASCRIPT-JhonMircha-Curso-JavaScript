@@ -414,6 +414,9 @@
 
             const nombre = "kEnAi";
             const edad = 7;
+            function ladrar() {
+                console.log("guauu guauu!!!")
+            }
 
             const perro = {
                 nombre: nombre,
@@ -431,9 +434,7 @@
                 nombre,
                 edad,
                 raza: "Callejero",
-                ladrar() {
-                    console.log("guauu guauu guauu!!!")
-                }
+                ladrar
             }
 
             console.log('\n-----  dog  -----');
@@ -447,41 +448,50 @@
         /* ************************************************************************************************** */
         /* **********     Curso JavaScript: 20. Parámetros REST & Operador Spread - #jonmircha     ********** */
         /* ************************************************************************************************** */
+        console.log("\n\n");
+        console.warn("**********     Curso JavaScript: 20. Parámetros REST & Operador Spread - #jonmircha     **********");
+        console.log("\n");
 
+        function sumar(a, b, ...c) {
 
-        /* function sumar(a, b, ...c) {
-          let resultado = a + b;
-    
-          c.forEach(function (n) {
-            resultado += n
-          });
-    
-          return resultado;
+            let resultado = a + b;
+
+            c.forEach(function (n) {
+                resultado += n
+            });
+
+            return resultado;
         }
-    
-        console.log(sumar(1, 2));
-        console.log(sumar(1, 2, 3));
-        console.log(sumar(1, 2, 3, 4));
-        console.log(sumar(1, 2, 3, 4, 5));
-        console.log(sumar(1, 2, 3, 4, 5, 6));
-        console.log(sumar(1, 2, 3, 4, 5, 6, 7));
-    
-    
-    
-        const arr1 = [1, 2, 3, 4, 5],
-          arr2 = [6, 7, 8, 9, 0];
-    
-        console.log(arr1, arr2);
-    
-        const arr3 = [...arr1, ...arr2];
-        console.log(arr3); */
 
+        console.log(sumar(1, 2));                       //  3
+        console.log(sumar(1, 2, 3));                    //  6
+        console.log(sumar(1, 2, 3, 4));                 //  10
+        console.log(sumar(1, 2, 3, 4, 5));              //  15
+        console.log(sumar(1, 2, 3, 4, 5, 6));           //  21
+        console.log(sumar(1, 2, 3, 4, 5, 6, 7));        //  28
+        console.log(sumar(1, 2, 3, 4, 5, 6, 7, 8));     //  36
+
+        console.log('\n');
+
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = [6, 7, 8, 9, 0];
+
+        console.log('arr1 + arr2');
+        console.log(arr1, arr2);
+
+        console.log('...arr1, ...arr2');
+        const arr3 = [...arr1, ...arr2];
+        console.log(arr3);
 
 
 
         /* ******************************************************************************** */
         /* **********     Curso JavaScript: 21. Arrow Functions - #jonmircha     ********** */
         /* ******************************************************************************** */
+        console.log("\n\n");
+        console.warn("**********     Curso JavaScript: 21. Arrow Functions - #jonmircha     **********");
+        console.log("\n");
+
 
         /* const saludar = () => console.log(`Hola`);
         saludar(); */
