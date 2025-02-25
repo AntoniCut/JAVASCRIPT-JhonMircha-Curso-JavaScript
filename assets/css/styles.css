@@ -42,6 +42,7 @@ h2 {
 }
 
 .layout__title {
+    margin: 3rem;
     font-size: 5rem;
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
