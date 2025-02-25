@@ -192,18 +192,14 @@
         console.log('Math.random() =>', Math.random());
         console.log('Math.round(Math.random() * 1000) =>', Math.round(Math.random() * 1000)); 
 
-        /*
-
-
-
-
+        
         /* **********     Curso JavaScript: 29. Operador de Cortocircuito - #jonmircha     ********** */
         /*
         Cortocircuito OR - cuando el valor de la izquierda en la expresión siempre pueda validar a true, es el valor que se cargará por defecto
     
         Cortocircuito AND - cuando el valor de la izquierda en la expresión siempre pueda validar a false, es el valor que se cargará por defecto
          */
-        /*  function saludar(nombre) {
+        function saludar(nombre) {
            nombre = nombre || "Desconocido";
            console.log(`Hola ${nombre}`);
          }
@@ -234,30 +230,24 @@
          console.log(19 && "Valor de la derecha");
          console.log(true && "Valor de la derecha");
          console.log([] && "Valor de la derecha");
-         console.log({} && "Valor de la derecha"); */
-
-
+         console.log({} && "Valor de la derecha"); 
 
 
 
         /* **********     Curso JavaScript: 30. alert, confirm y prompt - #jonmircha     ********** */
-        //console.log(window);
-        //alert("Hola esto es una alerta");
-        //confirm("Hola esto es una confirmación");
-        //prompt("Hola esto es un aviso y le permite al usuario ingresar un valor");
+        console.log(window);
+        alert("Hola esto es una alerta");
+        confirm("Hola esto es una confirmación");
+        prompt("Hola esto es un aviso y le permite al usuario ingresar un valor");
 
-        /* let alerta = alert("Hola esto es una alerta"),
-          confirmacion = confirm("Hola esto es una confirmación"),
-          aviso = prompt("Hola esto es un aviso y le permite al usuario ingresar un valor");
+        let alerta = alert("Hola esto es una alerta"),
+            confirmacion = confirm("Hola esto es una confirmación"),
+            aviso = prompt("Hola esto es un aviso y le permite al usuario ingresar un valor");
     
         console.log(alerta);
         console.log(confirmacion);
         console.log(aviso);
-     */
-
-
-
-
+     
 
         /* **********     Curso JavaScript: 31. Expresiones Regulares - #jonmircha     ********** */
         /*
@@ -268,7 +258,7 @@
             https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Regular_Expressions
         */
 
-        /*  let cadena = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga cupiditate dolores saepe, praesentium sit eaque recusandae id sapiente similique, laudantium voluptatum perferendis ea iure ad odio doloremque earum voluptate.";
+        let cadena = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fuga cupiditate dolores saepe, praesentium sit eaque recusandae id sapiente similique, laudantium voluptatum perferendis ea iure ad odio doloremque earum voluptate.";
     
          let expReg = new RegExp("lorem", "ig");
          console.log(expReg.test(cadena));
@@ -276,7 +266,7 @@
     
          let expReg2 = /lorem{1,}/ig;
          console.log(expReg2.test(cadena));
-         console.log(expReg2.exec(cadena)); */
+         console.log(expReg2.exec(cadena)); 
 
 
 

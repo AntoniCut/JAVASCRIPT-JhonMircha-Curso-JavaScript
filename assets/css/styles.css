@@ -89,6 +89,8 @@ h2 {
 
 .navbar__item {
     position: relative; 
+    background-color: #ceba07;
+    border-radius: 0.5rem;
 }
 
 .navbar__item > a {
