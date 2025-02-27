@@ -18,6 +18,7 @@ document.querySelectorAll('a[data-script]').forEach((enlace) => {
         layoutMain.style.display = 'flex';
 
         script.src = scriptSrc;
+        script.type = "module"; 
         script.async = true;
 
         script.onload = () => console.log(`\n\nScript ${scriptSrc} cargado correctamente.`);
