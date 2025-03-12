@@ -5,7 +5,7 @@
 //  -------------------------------------------------------------
 
 
-console.clear();
+//  console.clear();
 console.warn("**********  constantes.js  **********");
 console.log("\n");
 
