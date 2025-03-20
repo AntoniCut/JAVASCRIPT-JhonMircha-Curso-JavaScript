@@ -55,7 +55,7 @@ export const layout = () => {
                                 data-script="./01-tipos-de-datos/04-constantes-const.js"> 4 - Constantes: const </a>
                         </li>
                         <li class="navbar-submenu__item"> <a href="#"
-                                data-script="./01-tipos-de-datos/05-cadenas-de-text-string.js"> 5 - Cadenas de Texto:
+                                data-script="./01-tipos-de-datos/05-cadenas-de-texto-string.js"> 5 - Cadenas de Texto:
                                 string </a> </li>
                         <li class="navbar-submenu__item"> <a href="#"
                                 data-script="./01-tipos-de-datos/06-template-string.js"> 6 - Template String </a> </li>

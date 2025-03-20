@@ -16,20 +16,20 @@ body {
     flex-wrap: wrap;
     font-size: 1.6rem;
     font-family: 'Arial', sans-serif;
+    background-color: aliceblue;
 }
 
 
 .layout {
     width: 100%;
-    max-width: 1450px;
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex-wrap: wrap;
     gap: 4rem;
     padding: 2rem 6rem;
     font-family: 'Arial', sans-serif;
-    background-color: aliceblue;
 }
 
 hr {
@@ -51,8 +51,16 @@ h2 {
     text-align: center;
 }
 
+pre {
+    font-size: 1.4rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+
 .layout__header {
     width: 100%;
+    max-width: 1400px;
     height: 100px;
     display: flex;
     flex-direction: row;
@@ -79,6 +87,7 @@ h2 {
 .layout__navbar,
 .layout__navbar-go-to-home {
     width: 100%;
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -182,6 +191,7 @@ h2 {
 
 .layout__main {
     width: 100%;
+    max-width: 1400px;
     display: none;
     flex-direction: column;
     gap: 2rem;
